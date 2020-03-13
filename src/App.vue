@@ -3,7 +3,11 @@
     <div>
       <data-list>
         <div slot-scope="{ data: projects }">
-          <project-list :projects="projects"></project-list>
+          <filter-input :projects="projects">
+            <template slot="item" scope="props">
+              <project-list :data="props.data"></project-list>
+            </template>
+          </filter-input>
         </div>
       </data-list>
     </div>
@@ -12,12 +16,14 @@
 
 <script>
 import DataList from "./components/DataList";
+import FilterInput from "./components/FilterInput";
 import ProjectList from "./components/ProjectList";
 
 export default {
   name: `Project`,
   components: {
     DataList,
+    FilterInput,
     ProjectList
   }
 };

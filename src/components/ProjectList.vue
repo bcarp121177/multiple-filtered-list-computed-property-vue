@@ -1,13 +1,6 @@
 <template>
-  <div class="hello">
-    <select v-model="select">
-      <option v-for="(stage, index) in stages" :key="index" :value="stage">{{stage}}</option>
-    </select>
-    <br>
-    <input type="text" v-model="search">
-    <ul v-for="project in filterProjects" :key="project.id">
-      <li>{{project.name}}</li>
-    </ul>
+  <div>
+    <h3>Showing child {{data}}</h3>
   </div>
 </template>
 
@@ -21,25 +14,7 @@ export default {
       stages: ["Stage1", "Stage2"]
     };
   },
-  props: {
-    projects: Array
-  },
-  computed: {
-    filterProjects: function() {
-      let filtered = this.projects;
-      if (this.search) {
-        filtered = this.projects.filter(
-          p => p.name.toLowerCase().indexOf(this.search) > -1
-        );
-      }
-      if (this.select) {
-        filtered = filtered.filter(
-          p => p.stage.toLowerCase() === this.select.toLowerCase()
-        );
-      }
-      return filtered;
-    }
-  }
+  props: ["data"]
 };
 </script>
 
