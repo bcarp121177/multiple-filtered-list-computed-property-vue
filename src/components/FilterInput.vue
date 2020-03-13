@@ -1,10 +1,12 @@
 <template>
-  <div class="hello">
+  <div class>
     <select v-model="select">
       <option v-for="(stage, index) in stages" :key="index" :value="stage">{{stage}}</option>
     </select>
     <br>
     <input type="text" v-model="search">
+    <span v-if="loading">Loading...</span>
+    <div v-else-if="error">Error while fetching data!</div>
     <slot name="item" :data="filterProjects"></slot>
   </div>
 </template>
@@ -20,7 +22,10 @@ export default {
     };
   },
   props: {
-    projects: Array
+    projects: Array,
+    error: String,
+    load: ``,
+    loading: Boolean
   },
   computed: {
     filterProjects: function() {

@@ -3,7 +3,7 @@
     <div>
       <data-list>
         <div slot-scope="{ data: projects }">
-          <filter-input :projects="projects">
+          <filter-input :projects="projects" :error="error" :load="load" :loading="loading">
             <template slot="item" scope="props">
               <project-list :data="props.data"></project-list>
             </template>

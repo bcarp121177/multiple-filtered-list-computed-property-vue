@@ -1,5 +1,9 @@
 <template>
   <div>
+    <ul v-for="project in data" :key="project.id">
+      <li>{{project.name}}</li>
+      <li>{{project.stage}}</li>
+    </ul>
     <h3>Showing child {{data}}</h3>
   </div>
 </template>
